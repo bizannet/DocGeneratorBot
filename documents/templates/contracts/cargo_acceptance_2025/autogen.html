@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Акт приема-передачи груза</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        p {
+            margin: 0.2cm 0;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: center;
+            width: 45%;
+        }
+        .variable {
+            font-weight: bold;
+            color: #0d4a81;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Акт приема-передачи груза</h1>
+        <p>г. <span class="variable">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="variable">{{contract_day}}</span>» <span class="variable">{{contract_month}}</span> <span class="variable">{{contract_year}}</span> г.</p>
+    </div>
+
+    <div class="section">
+        <p><span class="variable">{{shipper_name}}</span>, именуемый(ая) в дальнейшем "Грузоотправитель", в лице <span class="variable">{{shipper_representative}}</span>, действующего(ей) на основании <span class="variable">{{shipper_basis}}</span>, с одной стороны, <span class="variable">{{consignee_name}}</span>, именуемый(ая) в дальнейшем "Грузополучатель", в лице <span class="variable">{{consignee_representative}}</span>, действующего(ей) на основании <span class="variable">{{consignee_basis}}</span>, с другой стороны, и <span class="variable">{{carrier_name}}</span>, именуемый(ая) в дальнейшем "Перевозчик", в лице <span class="variable">{{carrier_representative}}</span>, действующего(ей) на основании <span class="variable">{{carrier_basis}}</span>, с третьей стороны, а совместно именуемые "Стороны",</p>
+        <p>составили настоящий Акт о нижеследующем:</p>
+    </div>
+
+    <div class="section">
+        <p>1. Грузоотправитель передал, Перевозчик принял и доставил, а Грузополучатель принял следующий груз:</p>
+        <div class="subsection">
+            <p>- Описание груза: <span class="variable">{{cargo_description}}</span></p>
+            <p>- Вес груза: <span class="variable">{{cargo_weight}}</span> кг</p>
+            <p>- Объем груза: <span class="variable">{{cargo_volume}}</span> м³</p>
+            <p>- Стоимость груза: <span class="variable">{{cargo_value}}</span> (<span class="variable">{{cargo_value_words}}</span>) рублей</p>
+            <p>- Адрес погрузки: <span class="variable">{{loading_address}}</span></p>
+            <p>- Адрес выгрузки: <span class="variable">{{unloading_address}}</span></p>
+            <p>- Вид транспорта: <span class="variable">{{transport_type}}</span></p>
+            <p>- Номер транспортного средства: <span class="variable">{{transport_number}}</span></p>
+            <p>- ФИО водителя: <span class="variable">{{transport_driver}}</span></p>
+            <p>- Дата погрузки: <span class="variable">{{transport_start_date}}</span></p>
+            <p>- Дата выгрузки: <span class="variable">{{transport_end_date}}</span></p>
+        </div>
+        <p>2. Состояние груза при приемке оценено как: <span class="variable">{{cargo_condition}}</span>.</p>
+
+        {% if cargo_defects %}
+        <p>3. При приемке груза выявлены следующие недостатки:</p>
+        <div class="subsection">
+            <p>- <span class="variable">{{cargo_defects}}</span></p>
+        </div>
+        {% else %}
+        <p>3. При приемке груза выявленные недостатки отсутствуют.</p>
+        {% endif %}
+
+        <p>4. Настоящий Акт составлен в трех экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из Сторон.</p>
+        <p>5. Настоящий Акт является неотъемлемой частью договора грузоперевозки №<span class="variable">{{contract_number}}</span> от <span class="variable">{{contract_date_sale}}</span>.</p>
+    </div>
+
+    <div class="signature-column">
+        <div class="signature-block">
+            <p>«<span class="variable">{{contract_day}}</span>» <span class="variable">{{contract_month}}</span> <span class="variable">{{contract_year}}</span> г.</p>
+            <p>________________________________________________</p>
+            <p>Грузоотправитель – подпись / расшифровка</p>
+            <p><span class="variable">{{shipper_name}}</span></p>
+        </div>
+        <div class="signature-block">
+            <p>«<span class="variable">{{contract_day}}</span>» <span class="variable">{{contract_month}}</span> <span class="variable">{{contract_year}}</span> г.</p>
+            <p>________________________________________________</p>
+            <p>Грузополучатель – подпись / расшифровка</p>
+            <p><span class="variable">{{consignee_name}}</span></p>
+        </div>
+    </div>
+    <div class="signature-column" style="margin-top: 0.5cm;">
+        <div class="signature-block">
+            <p>«<span class="variable">{{contract_day}}</span>» <span class="variable">{{contract_month}}</span> <span class="variable">{{contract_year}}</span> г.</p>
+            <p>________________________________________________</p>
+            <p>Перевозчик – подпись / расшифровка</p>
+            <p><span class="variable">{{carrier_name}}</span></p>
+        </div>
+        <div class="signature-block">
+            <p>«<span class="variable">{{contract_day}}</span>» <span class="variable">{{contract_month}}</span> <span class="variable">{{contract_year}}</span> г.</p>
+            <p>________________________________________________</p>
+            <p>Водитель – подпись / расшифровка</p>
+            <p><span class="variable">{{transport_driver}}</span></p>
+        </div>
+    </div>
+</body>
+</html>

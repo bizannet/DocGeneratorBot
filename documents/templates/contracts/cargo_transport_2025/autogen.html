@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Договор грузоперевозки</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        h2 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin: 0.3cm 0 0.2cm 0;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: left;
+            width: 45%;
+        }
+        .variable {
+            font-weight: bold;
+            color: #333;
+        }
+        .party-details {
+            margin-bottom: 0.1cm;
+            line-height: 1.3;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ДОГОВОР НА ПЕРЕВОЗКУ ГРУЗОВ </h1>
+        <p>г. <span class="variable">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="variable">{{contract_date}}</span>» г.</p>
+    </div>
+
+    <div class="section">
+        <p>
+            {% if carrier_type == "Физическое лицо" %}
+                <span class="variable">{{carrier_last_name_fl}} {{carrier_first_name_fl}} {{carrier_patronymic_fl}}</span>,
+                паспорт: серия <span class="variable">{{carrier_passport_series_fl}}</span>
+                номер <span class="variable">{{carrier_passport_number_fl}}</span>,
+                выдан <span class="variable">{{carrier_passport_issued_by_fl}}</span>,
+                <span class="variable">{{carrier_passport_issue_date_fl}}</span>,
+                код подразделения <span class="variable">{{carrier_passport_department_code_fl}}</span>,
+                по адресу: <span class="variable">{{carrier_address}}</span>,
+                именуемый в дальнейшем "Перевозчик", с одной стороны,
+            {% elif carrier_type == "ИП" %}
+                Индивидуальный предприниматель
+                <span class="variable">{{carrier_last_name_ip}} {{carrier_first_name_ip}} {{carrier_patronymic_ip}}</span>,
+                паспорт: серия <span class="variable">{{carrier_passport_series_ip}}</span>
+                номер <span class="variable">{{carrier_passport_number_ip}}</span>,
+                выдан <span class="variable">{{carrier_passport_issued_by_ip}}</span>,
+                <span class="variable">{{carrier_passport_issue_date_ip}}</span>,
+                код подразделения <span class="variable">{{carrier_passport_department_code_ip}}</span>,
+                по адресу: <span class="variable">{{carrier_address}}</span>,
+                ИНН <span class="variable">{{carrier_inn_ip}}</span>,
+                ОГРНИП <span class="variable">{{carrier_ogrnip_ip}}</span>,
+                именуемый в дальнейшем "Перевозчик", с одной стороны,
+            {% elif carrier_type == "ООО" %}
+                <span class="variable">{{carrier_company_name_ooo}}</span>,
+                в лице <span class="variable">{{carrier_director_position_ooo}} {{carrier_director_name_ooo}}</span>,
+                действующего на основании <span class="variable">{{carrier_basis_ooo}}</span>,
+                именуемый в дальнейшем "Перевозчик", с одной стороны,
+            {% endif %}
+        </p>
+
+        <p>
+            {% if customer_type == "Физическое лицо" %}
+                <span class="variable">{{customer_last_name_fl}} {{customer_first_name_fl}} {{customer_patronymic_fl}}</span>,
+                паспорт: серия <span class="variable">{{customer_passport_series_fl}}</span>
+                номер <span class="variable">{{customer_passport_number_fl}}</span>,
+                выдан <span class="variable">{{customer_passport_issued_by_fl}}</span>,
+                <span class="variable">{{customer_passport_issue_date_fl}}</span>,
+                код подразделения <span class="variable">{{customer_passport_department_code_fl}}</span>,
+                по адресу: <span class="variable">{{customer_address}}</span>,
+                именуемый в дальнейшем "Заказчик", с другой стороны,
+            {% elif customer_type == "ИП" %}
+                Индивидуальный предприниматель
+                <span class="variable">{{customer_last_name_ip}} {{customer_first_name_ip}} {{customer_patronymic_ip}}</span>,
+                паспорт: серия <span class="variable">{{customer_passport_series_ip}}</span>
+                номер <span class="variable">{{customer_passport_number_ip}}</span>,
+                выдан <span class="variable">{{customer_passport_issued_by_ip}}</span>,
+                <span class="variable">{{customer_passport_issue_date_ip}}</span>,
+                код подразделения <span class="variable">{{customer_passport_department_code_ip}}</span>,
+                по адресу: <span class="variable">{{customer_address}}</span>,
+                ИНН <span class="variable">{{customer_inn_ip}}</span>,
+                ОГРНИП <span class="variable">{{customer_ogrnip_ip}}</span>,
+                именуемый в дальнейшем "Заказчик", с другой стороны,
+            {% elif customer_type == "ООО" %}
+                <span class="variable">{{customer_company_name_ooo}}</span>,
+                в лице <span class="variable">{{customer_director_position_ooo}} {{customer_director_name_ooo}}</span>,
+                действующего на основании <span class="variable">{{customer_basis_ooo}}</span>,
+                именуемый в дальнейшем "Заказчик", с другой стороны,
+            {% endif %}
+                а совместно именуемые "Стороны", заключили настоящий Договор о нижеследующем:
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>1. ПРЕДМЕТ ДОГОВОРА</h2>
+        <p>1.1. В соответствии с условиями настоящего договора Перевозчик обязуется осуществлять перевозку грузов Заказчика на основании его заявки, а Заказчик обязуется своевременно оплачивать оказанные Перевозчиком услуги согласно тарифам Перевозчика, действующим на дату оказываемых услуг.</p>
+
+        <p>1.2. Перевозчик вправе оказывать Заказчику дополнительные услуги, связанные с организацией перевозок грузов в городском и междугороднем сообщении.</p>
+
+        <p>1.3. Перевозка грузов осуществляется автомобильным транспортом Перевозчика.</p>
+
+        <p>1.4. Конкретные параметры перевозки (описание груза, адреса, сроки, характеристики транспортного средства) согласовываются Сторонами в заявках Заказчика, являющихся неотъемлемой частью настоящего Договора.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h2>
+        <p>2.1. Перевозчик выполняет перевозки грузов Заказчика на основании письменной заявки Заказчика.</p>
+
+        <p>2.2. Заявка подается не позднее, чем за <span class="variable">{{request_deadline}}</span> часов до подачи автотранспортного средства под погрузку.</p>
+
+        <p>2.3. Перевозчик обязан:</p>
+        <ul>
+            <li>Обеспечить своевременную подачу автотранспортных средств в пункт погрузки</li>
+            <li>Подать под погрузку исправные автотранспортные средства</li>
+            <li>В оговоренный срок доставить груз в пункт назначения</li>
+            <li>Обеспечить сохранность груза во время перевозки</li>
+        </ul>
+
+        <p>2.4. Заказчик обязан:</p>
+        <ul>
+            <li>Подготовить груз к перевозке и сопроводительные документы</li>
+            <li>Обеспечить погрузку и разгрузку автотранспортных средств</li>
+            <li>Оплатить услуги перевозки в установленные сроки</li>
+            <li>Содержать погрузочно-разгрузочные площадки в исправном состоянии</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. СТОИМОСТЬ УСЛУГ И ПОРЯДОК РАСЧЕТОВ</h2>
+        <p>3.1. Стоимость услуг перевозки определяется на основании тарифов Перевозчика, действующих на дату оказания услуг.</p>
+
+        <p>3.2. Оплата производится Заказчиком в следующем порядке: <span class="variable">{{payment_terms}}</span>.</p>
+
+        <p>3.3. Максимальная сумма по настоящему договору составляет <span class="variable">{{max_contract_amount}}</span> рублей.</p>
+
+        <p>3.4. Тарифы на перевозку грузов могут изменяться. Перевозчик оставляет за собой право изменять действующие тарифы, предупредив об этом Заказчика письменно за <span class="variable">{{price_change_notice}}</span> дней.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. СРОК ДЕЙСТВИЯ ДОГОВОРА</h2>
+        <p>4.1. Настоящий договор вступает в силу с момента подписания и действует до "<span class="variable">{{contract_end_date}}</span>" г.</p>
+
+        <p>4.2. Договор может быть расторгнут досрочно по инициативе любой из Сторон при условии уведомления другой Стороны не менее чем за <span class="variable">{{termination_notice}}</span> дней.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
+        <p>5.1. За неисполнение или ненадлежащее исполнение обязательств по Договору Стороны несут ответственность в соответствии с действующим законодательством РФ.</p>
+
+        <p>5.2. За просрочку оплаты Заказчик уплачивает Перевозчику неустойку в размере 0,1% от суммы задолженности за каждый день просрочки.</p>
+
+        <p>5.3. Стороны освобождаются от ответственности за неисполнение обязательств, если это неисполнение вызвано обстоятельствами непреодолимой силы.</p>
+    </div>
+
+    <div class="section">
+        <h2>6. ПРОЧИЕ УСЛОВИЯ</h2>
+        <p>6.1. Все изменения и дополнения к Договору оформляются в письменной форме.</p>
+
+        <p>6.2. Договор составлен в двух экземплярах, имеющих одинаковую юридическую силу.</p>
+
+        <p>6.3. Споры разрешаются путем переговоров, а при недостижении согласия - в судебном порядке.</p>
+
+        <p>6.4. Все уведомления направляются Сторонами друг другу в письменной форме по адресам, указанным в настоящем Договоре.</p>
+    </div>
+
+    <div class="section">
+        <h2>7. АДРЕСА И ПОДПИСИ СТОРОН</h2>
+        <div class="signature-column">
+            <div class="signature-block">
+                <div class="party-details"><strong>Перевозчик</strong></div>
+                {% if carrier_type == "Физическое лицо" %}
+                    <div class="party-details"><span class="variable">{{carrier_last_name_fl}} {{carrier_first_name_fl}} {{carrier_patronymic_fl}}</span></div>
+                    <div class="party-details">Паспорт: серия <span class="variable">{{carrier_passport_series_fl}}</span> № <span class="variable">{{carrier_passport_number_fl}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{carrier_address}}</span></div>
+                {% elif carrier_type == "ИП" %}
+                    <div class="party-details">ИП <span class="variable">{{carrier_last_name_ip}} {{carrier_first_name_ip}} {{carrier_patronymic_ip}}</span></div>
+                    <div class="party-details">Паспорт: серия <span class="variable">{{carrier_passport_series_ip}}</span> № <span class="variable">{{carrier_passport_number_ip}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{carrier_address}}</span></div>
+                    <div class="party-details">ИНН: <span class="variable">{{carrier_inn_ip}}</span></div>
+                    <div class="party-details">ОГРНИП: <span class="variable">{{carrier_ogrnip_ip}}</span></div>
+                {% elif carrier_type == "ООО" %}
+                    <div class="party-details"><span class="variable">{{carrier_company_name_ooo}}</span></div>
+                    <div class="party-details">ИНН: <span class="variable">{{carrier_inn_ooo}}</span></div>
+                    <div class="party-details">ОГРН: <span class="variable">{{carrier_ogrn_ooo}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{carrier_address}}</span></div>
+                {% endif %}
+                <div class="party-details" style="margin-top: 20px;">_________________________</div>
+                <div class="party-details"><span class="variable">
+                    {% if carrier_type == "ООО" %}
+                        {{carrier_director_name_ooo}}
+                    {% elif carrier_type == "Физическое лицо" %}
+                        {{carrier_last_name_fl}} {{carrier_first_name_fl|first}}.{% if carrier_patronymic_fl %}{{carrier_patronymic_fl|first}}.{% endif %}
+                    {% elif carrier_type == "ИП" %}
+                        {{carrier_last_name_ip}} {{carrier_first_name_ip|first}}.{% if carrier_patronymic_ip %}{{carrier_patronymic_ip|first}}.{% endif %}
+                    {% endif %}
+                </span></div>
+            </div>
+
+            <div class="signature-block">
+                <div class="party-details"><strong>Заказчик</strong></div>
+                {% if customer_type == "Физическое лицо" %}
+                    <div class="party-details"><span class="variable">{{customer_last_name_fl}} {{customer_first_name_fl}} {{customer_patronymic_fl}}</span></div>
+                    <div class="party-details">Паспорт: серия <span class="variable">{{customer_passport_series_fl}}</span> № <span class="variable">{{customer_passport_number_fl}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{customer_address}}</span></div>
+                {% elif customer_type == "ИП" %}
+                    <div class="party-details">ИП <span class="variable">{{customer_last_name_ip}} {{customer_first_name_ip}} {{customer_patronymic_ip}}</span></div>
+                    <div class="party-details">Паспорт: серия <span class="variable">{{customer_passport_series_ip}}</span> № <span class="variable">{{customer_passport_number_ip}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{customer_address}}</span></div>
+                    <div class="party-details">ИНН: <span class="variable">{{customer_inn_ip}}</span></div>
+                    <div class="party-details">ОГРНИП: <span class="variable">{{customer_ogrnip_ip}}</span></div>
+                {% elif customer_type == "ООО" %}
+                    <div class="party-details"><span class="variable">{{customer_company_name_ooo}}</span></div>
+                    <div class="party-details">ИНН: <span class="variable">{{customer_inn_ooo}}</span></div>
+                    <div class="party-details">ОГРН: <span class="variable">{{customer_ogrn_ooo}}</span></div>
+                    <div class="party-details">Адрес: <span class="variable">{{customer_address}}</span></div>
+                {% endif %}
+                <div class="party-details" style="margin-top: 20px;">_________________________</div>
+                <div class="party-details"><span class="variable">
+                    {% if customer_type == "ООО" %}
+                        {{customer_director_name_ooo}}
+                    {% elif customer_type == "Физическое лицо" %}
+                        {{customer_last_name_fl}} {{customer_first_name_fl|first}}.{% if customer_patronymic_fl %}{{customer_patronymic_fl|first}}.{% endif %}
+                    {% elif customer_type == "ИП" %}
+                        {{customer_last_name_ip}} {{customer_first_name_ip|first}}.{% if customer_patronymic_ip %}{{customer_patronymic_ip|first}}.{% endif %}
+                    {% endif %}
+                </span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

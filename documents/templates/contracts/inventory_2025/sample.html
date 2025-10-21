@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Опись имущества</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm 1.5cm 2cm 1.5cm;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            margin: 0;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.4cm;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin: 0 0 0.25cm 0;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        p {
+            margin: 0.15cm 0;
+            text-align: justify;
+            padding-left: 0.3cm;
+            padding-right: 0.3cm;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.2cm 0 0.3cm 0;
+            font-size: 9.5pt;
+            table-layout: fixed;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            word-wrap: break-word;
+        }
+        td {
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8cm;
+            padding-left: 0.3cm;
+            padding-right: 0.3cm;
+        }
+        .signature-block {
+            width: 45%;
+            text-align: center;
+        }
+        .variable {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ОПИСЬ ИМУЩЕСТВА</h1>
+        <p>к договору аренды жилого помещения</p>
+        <p>№ <span class="variable">АРЕНДА-2025-042</span> от <span class="variable">15.10.2025</span></p>
+        <p>расположенного по адресу:</p>
+        <p><span class="variable">г. Москва, ул. Пушкина, д. 15, кв. 10</span></p>
+    </div>
+
+    <div class="section">
+        <p>Настоящая опись составлена в том, что в указанном жилом помещении имеется следующее имущество:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;">№</th>
+                    <th style="width: 50%;">Наименование имущества</th>
+                    <th style="width: 15%;">Количество</th>
+                    <th style="width: 30%;">Состояние</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><span class="variable">Двухспальная кровать</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Хорошее, без повреждений</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span class="variable">Прикроватные тумбочки</span></td>
+                    <td><span class="variable">2</span></td>
+                    <td><span class="variable">Хорошее</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><span class="variable">Шкаф-купе</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Хорошее, двери скользят плавно</span></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><span class="variable">Обеденный стол</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Удовлетворительное, незначительные царапины</span></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><span class="variable">Стулья кухонные</span></td>
+                    <td><span class="variable">4</span></td>
+                    <td><span class="variable">Хорошее</span></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><span class="variable">Холодильник BOSCH</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Рабочий, без посторонних шумов</span></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><span class="variable">Стиральная машина LG</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Рабочая, все режимы функционируют</span></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><span class="variable">Электрическая плита</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Исправна, все конфорки работают</span></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><span class="variable">Телевизор Samsung 43"</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Рабочий, пульт в комплекте</span></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><span class="variable">Кухонный гарнитур</span></td>
+                    <td><span class="variable">1</span></td>
+                    <td><span class="variable">Хорошее, фасады без сколов</span></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Настоящая опись составлена в двух экземплярах, имеющих одинаковую юридическую силу, и является неотъемлемой частью договора аренды жилого помещения.</p>
+    </div>
+
+    <div class="signature-column">
+        <div class="signature-block">
+            <p>«<span class="variable">16</span>» <span class="variable">октября</span> <span class="variable">2025</span> г.</p>
+            <p>_________________________</p>
+            <p>Арендатор</p>
+            <p><span class="variable">Петров Петр Петрович</span></p>
+        </div>
+        <div class="signature-block">
+            <p>«<span class="variable">16</span>» <span class="variable">октября</span> <span class="variable">2025</span> г.</p>
+            <p>_________________________</p>
+            <p>Арендодатель</p>
+            <p><span class="variable">Иванов Иван Иванович</span></p>
+        </div>
+    </div>
+</body>
+</html>

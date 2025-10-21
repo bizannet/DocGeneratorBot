@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>УВЕДОМЛЕНИЕ О НАМЕРЕНИИ ОСУЩЕСТВЛЯТЬ ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+            text-transform: uppercase;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        p {
+            margin: 0.2cm 0;
+        }
+        ul {
+            padding-left: 15px;
+            margin: 0.2cm 0;
+        }
+        li {
+            margin-bottom: 3px;
+        }
+        .footer {
+            margin-top: 1cm;
+            text-align: center;
+            font-size: 10pt;
+            color: #666;
+        }
+        .variable {
+            font-weight: bold;
+            color: #0d4a81;
+        }
+        .signature-block {
+            margin-top: 1cm;
+        }
+        .signature-line {
+            display: inline-block;
+            width: 200px;
+            border-bottom: 1px solid #333;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>УВЕДОМЛЕНИЕ О НАМЕРЕНИИ ОСУЩЕСТВЛЯТЬ ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</h1>
+    </div>
+
+    <div class="section">
+        <p><span class="variable">{{ filled_data.get('operator_name', '') }}</span></p>
+        <p>ИНН <span class="variable">{{ filled_data.get('inn', '') }}</span></p>
+        <p>Адрес: <span class="variable">{{ filled_data.get('address', '') }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>1) с целью:</p>
+        <ul>
+            <li>Идентификация пользователей при использовании сайта</li>
+            <li>Предоставление персонализированных услуг</li>
+            <li>Обработка заказов и запросов</li>
+            <li>Отправка информационных сообщений и уведомлений</li>
+            <li>Проведение маркетинговых исследований</li>
+            <li>Улучшение качества работы сайта и предоставляемых услуг</li>
+        </ul>
+
+        <p>осуществляет обработку:</p>
+        <ul>
+            <li>Фамилия, имя, отчество</li>
+            <li>Контактная информация (адрес электронной почты, номер телефона)</li>
+            <li>Данные, предоставляемые при регистрации на сайте</li>
+            <li>Данные об IP-адресе, используемом браузере и операционной системе</li>
+            <li>Иные данные, предоставляемые субъектом персональных данных</li>
+        </ul>
+
+        <p>принадлежащих:</p>
+        <ul>
+            <li>Пользователи сайта</li>
+            <li>Клиенты и потенциальные клиенты</li>
+        </ul>
+
+        <p>на основании:</p>
+        <ul>
+            <li>Согласие субъекта персональных данных (ст. 6 ФЗ-152)</li>
+            <li>Требования законодательства Российской Федерации (ст. 6 ФЗ-152)</li>
+            <li>Исполнение договора, стороной которого является субъект персональных данных (ст. 6 ФЗ-152)</li>
+        </ul>
+
+        <p>Обработка указанных персональных данных будет осуществляться путем:</p>
+        <ul>
+            <li>Сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение)</li>
+            <li>Извлечение, использование, передача (распространение, предоставление, доступ)</li>
+            <li>Обезличивание, блокирование, удаление, уничтожение персональных данных</li>
+        </ul>
+
+        <p>Автоматизированная и неавтоматизированная обработка персональных данных</p>
+    </div>
+
+    <div class="section">
+        <p>Для обеспечения безопасности персональных данных, обрабатываемых в вышеуказанных целях, принимаются следующие меры:</p>
+        <ul>
+            <li>Использование защищенных протоколов передачи данных (HTTPS)</li>
+            <li>Шифрование конфиденциальной информации</li>
+            <li>Контроль доступа к персональным данным</li>
+            <li>Регулярное тестирование систем безопасности</li>
+            <li>Обучение сотрудников вопросам защиты персональных данных</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <p>Сведения о лицах, ответственных за организацию обработки персональных данных:</p>
+        <p><span class="variable">{{ filled_data.get('full_name', '') }}</span> - <span class="variable">{{ filled_data.get('position', '') }}</span></p>
+        <p>Контактные данные: <span class="variable">{{ filled_data.get('contact_email', '') }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>Дата начала обработки персональных данных: <span class="variable">{{ filled_data.get('notification_date', '') }}</span></p>
+
+        <p>Срок или условие прекращения обработки персональных данных:</p>
+        <p>До достижения целей обработки персональных данных, но не более 6 лет для данных, связанных с договорами и платежами, и 1 год для данных маркетинговой активности</p>
+    </div>
+
+    <div class="section">
+        <p>Сведения о наличии или об отсутствии трансграничной передачи персональных данных:</p>
+        {% if filled_data.get('transfer_abroad') == 'Да' %}
+        <p>Оператор осуществляет трансграничную передачу персональных данных в следующие страны:</p>
+        <ul>
+            {% if filled_data.get('countries') %}
+                {% for country in filled_data.get('countries', []) %}
+                    <li>{{ country }}</li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <p>Срок трансграничной передачи: <span class="variable">{{ filled_data.get('transfer_period', '') }}</span></p>
+        {% else %}
+        <p>Трансграничная передача персональных данных не осуществляется</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <p>Сведения о месте нахождения базы данных информации, содержащей персональные данные граждан Российской Федерации:</p>
+        <p>Российская Федерация, <span class="variable">{{ filled_data.get('address', '') }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>Сведения о лицах, имеющих доступ и (или) осуществляющих на основании договора обработку персональных данных:</p>
+        {% if filled_data.get('data_processor') == 'С привлечением сторонних лиц' %}
+        <p><span class="variable">{{ filled_data.get('processor_details', '') }}</span></p>
+        {% else %}
+        <p>Оператор самостоятельно осуществляет обработку персональных данных</p>
+        {% endif %}
+        <p>Ответственное лицо: <span class="variable">{{ filled_data.get('full_name', '') }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>Сведения об обеспечении безопасности персональных данных:</p>
+        <p>Безопасность персональных данных обеспечивается выполнением согласованных мероприятий, использованием методов защиты информации, в том числе шифровальных (криптографических) средств, в соответствии с требованиями к защите персональных данных, установленными Правительством Российской Федерации</p>
+    </div>
+
+    <div class="footer">
+        <div class="signature-block">
+            <p>_________________________ <span class="variable">{{ filled_data.get('full_name', '') }}</span></p>
+            <p>(подпись оператора или иного уполномоченного лица оператора)</p>
+        </div>
+
+        <p>"___" __________________ 20__ г.</p>
+
+        <br>
+        <p>Оператор:</p>
+        <p><span class="variable">{{ filled_data.get('operator_name', '') }}</span></p>
+        <p>ИНН <span class="variable">{{ filled_data.get('inn', '') }}</span></p>
+        <p>Адрес: <span class="variable">{{ filled_data.get('address', '') }}</span></p>
+        <p>Сайт: <span class="variable">{{ filled_data.get('site_url', '') }}</span></p>
+    </div>
+</body>
+</html>

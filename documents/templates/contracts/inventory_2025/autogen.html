@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Опись имущества</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm 1.5cm 2cm 1.5cm;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            margin: 0;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.4cm;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin: 0 0 0.25cm 0;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        p {
+            margin: 0.15cm 0;
+            text-align: justify;
+            padding-left: 0.3cm;
+            padding-right: 0.3cm;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.2cm 0 0.3cm 0;
+            font-size: 9.5pt;
+            table-layout: fixed; /* ← Ключевое для переноса */
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            word-wrap: break-word;
+        }
+        td {
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word; /* ← Разрешает перенос длинных слов */
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8cm;
+            padding-left: 0.3cm;
+            padding-right: 0.3cm;
+        }
+        .signature-block {
+            width: 45%;
+            text-align: center;
+        }
+        .variable {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ОПИСЬ ИМУЩЕСТВА</h1>
+        <p>к договору аренды</p>
+        {% if contract_number %}
+        <p>№ <span class="variable">{{ contract_number }}</span> от <span class="variable">{{ contract_date }}</span></p>
+        {% else %}
+        <p>от <span class="variable">{{ contract_date }}</span></p>
+        {% endif %}
+        <p>расположенного по адресу:</p>
+        <p><span class="variable">{{ property_full_address }}</span></p>
+    </div>
+
+    <div class="section">
+        <p>Настоящая опись составлена в том, что в указанном жилом помещении имеется следующее имущество:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;">№</th>
+                    <th style="width: 50%;">Наименование имущества</th>
+                    <th style="width: 15%;">Количество</th>
+                    <th style="width: 30%;">Состояние</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventory_items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><span class="variable">{{ item.name }}</span></td>
+                    <td><span class="variable">{{ item.quantity }}</span></td>
+                    <td><span class="variable">{{ item.condition }}</span></td>
+                </tr>
+                {% endfor %}
+
+                {% set filled = inventory_items|length %}
+                {% for i in range(filled, 10) %}
+                <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>___________________________________________________________</td>
+                    <td>____</td>
+                    <td>___________________________________________________________</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>Настоящая опись составлена в двух экземплярах, имеющих одинаковую юридическую силу, и является неотъемлемой частью договора аренды жилого помещения.</p>
+    </div>
+
+    <div class="signature-column">
+        <div class="signature-block">
+            <p>«<span class="variable">{{ inventory_day }}</span>» <span class="variable">{{ inventory_month }}</span> <span class="variable">{{ inventory_year }}</span> г.</p>
+            <p>_________________________</p>
+            <p>Арендатор</p>
+            <p><span class="variable">{{ tenant_full_name }}</span></p>
+        </div>
+        <div class="signature-block">
+            <p>«<span class="variable">{{ inventory_day }}</span>» <span class="variable">{{ inventory_month }}</span> <span class="variable">{{ inventory_year }}</span> г.</p>
+            <p>_________________________</p>
+            <p>Арендодатель</p>
+            <p><span class="variable">{{ landlord_full_name }}</span></p>
+        </div>
+    </div>
+</body>
+</html>

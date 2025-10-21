@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Акт приема-передачи выполненных работ</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        p {
+            margin: 0.2cm 0;
+            text-align: justify;
+        }
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5cm;
+        }
+        .signature-cell {
+            width: 48%;
+            vertical-align: top;
+        }
+        .signature-block {
+            text-align: left;
+            /* Убираем display: flex */
+        }
+        .placeholder {
+            background-color: #f0f8ff;
+            border-bottom: 1px dashed #0d4a81;
+            padding: 2px 4px;
+        }
+        .party-details {
+            margin-bottom: 0.1cm;
+            line-height: 1.3;
+        }
+        .signature-line {
+            border-top: 1px solid black;
+            width: 80%;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>АКТ ПРИЕМА-ПЕРЕДАЧИ ВЫПОЛНЕННЫХ РАБОТ</h1>
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+            <p>г. <span class="placeholder">Москва</span></p>
+            <p>«<span class="placeholder">30</span>» <span class="placeholder">июня</span> <span class="placeholder">2025</span> г.</p>
+        </div>
+    </div>
+    <div class="section">
+        <p>
+            Общество с ограниченной ответственностью "<span class="placeholder">Ромашка</span>", именуемое в дальнейшем "Заказчик", в лице <span class="placeholder">Ивановой А.П.</span>, действующего на основании Устава, с одной стороны,
+        </p>
+
+        <p>
+            Индивидуальный предприниматель <span class="placeholder">Иванов Иван Иванович</span>, зарегистрированный(ая) в установленном законом порядке, ИНН <span class="placeholder">123456789012</span>, ОГРНИП <span class="placeholder">123456789012345</span>, зарегистрированный(ая) по адресу: <span class="placeholder">123456, г. Москва, ул. Ленина, д. 1, кв. 1</span>, именуемый(ая) в дальнейшем "Подрядчик", с другой стороны, а совместно именуемые "Стороны",
+        </p>
+
+        <p>на основании договора подряда №<span class="placeholder">1</span> от «<span class="placeholder">01</span>» <span class="placeholder">июня</span> <span class="placeholder">2025</span> г., составили настоящий Акт о нижеследующем:</p>
+    </div>
+
+    <div class="section">
+        <p>1. Подрядчик выполнил и сдал, а Заказчик принял следующие работы:</p>
+        <div class="subsection">
+            <p>- <span class="placeholder">Ремонт офисного помещения, включая отделочные работы, электромонтаж, сантехнические работы</span></p>
+            <p>- Срок выполнения работ: с <span class="placeholder">01.06.2025</span> по <span class="placeholder">30.06.2025</span></p>
+            <p>- Стоимость выполненных работ: <span class="placeholder">500 000 руб. 00 коп.</span> (<span class="placeholder">Пятьсот тысяч рублей 00 копеек</span>)</p>
+        </div>
+        <p>2. Качество выполненных работ оценено как: <span class="placeholder">соответствует требованиям договора</span>.</p>
+
+        <p>3. При приемке работ выявленные недостатки отсутствуют.</p>
+
+        <p>4. Настоящий Акт составлен в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из Сторон.</p>
+        <p>5. Настоящий Акт является неотъемлемой частью договора подряда №<span class="placeholder">1</span> от «<span class="placeholder">01</span>» <span class="placeholder">июня</span> <span class="placeholder">2025</span> г.</p>
+    </div>
+
+        <table class="signature-table">
+            <tr>
+                <td class="signature-cell">
+                    <div class="signature-block">
+                        <p>ЗАКАЗЧИК:</p>
+                        <div class="party-details"><span class="placeholder">ООО "Ромашка"</span></div>
+                        <p>«<span class="placeholder">30</span>» <span class="placeholder">июня</span> <span class="placeholder">2025</span> г.</p>
+                        <p><span class="signature-line"></span></p>
+                        <p>Подпись</p>
+                    </div>
+                </td>
+                <td class="signature-cell">
+                    <div class="signature-block">
+                        <p>ПОДРЯДЧИК:</p>
+                        <div class="party-details"><span class="placeholder">Иванов Иван Иванович</span></div>
+                        <p>«<span class="placeholder">30</span>» <span class="placeholder">июня</span> <span class="placeholder">2025</span> г.</p>
+                        <p><span class="signature-line"></span></p>
+                        <p>Подпись</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

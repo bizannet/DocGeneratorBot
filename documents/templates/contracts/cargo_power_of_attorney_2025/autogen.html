@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Доверенность на получение грузов по форме М-2</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        p {
+            margin: 0.2cm 0;
+            text-align: justify;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .signature-block {
+            margin-top: 1cm;
+        }
+        .signature-line {
+            margin: 5px 0;
+        }
+        .stamp {
+            text-align: left;
+            margin-top: 5px;
+        }
+        .variable {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Доверенность на получение грузов по форме М-2 № <span class="variable">{{document_number}}</span></h1>
+        <p>г. <span class="variable">{{city}}</span> "<span class="variable">{{issue_date}}</span>" г.</p>
+    </div>
+
+    <div class="section">
+        <p><span class="variable">{{principal_company}}</span>, именуемое в дальнейшем "Доверитель", в лице <span class="variable">{{principal_director}}</span>, действующего на основании <span class="variable">{{principal_basis}}</span>, выдало настоящую доверенность <span class="variable">{{representative_fullname}}</span>, паспорт: <span class="variable">{{representative_passport}}</span>, выдан <span class="variable">{{representative_passport_issued}}</span>, код подразделения <span class="variable">{{representative_passport_code}}</span>, зарегистрированному(ой) по адресу: <span class="variable">{{representative_address}}</span>, на получение материальных ценностей по доверенности.</p>
+
+        <p>Уполномочивает указанное лицо получать от имени Доверителя:</p>
+        <ul>
+            <li>Товарно-материальные ценности по накладным № <span class="variable">{{waybill_numbers}}</span></li>
+            <li>Подписывать приходные документы</li>
+            <li>Осуществлять прочие действия, связанные с получением грузов</li>
+        </ul>
+
+        <p>Доверенность выдана сроком до "<span class="variable">{{validity_date}}</span>" г. включительно.</p>
+    </div>
+
+    <div class="signature-block">
+        <div class="signature-line"> <span class="variable">{{principal_director_short}}</span></div>
+        <div class="stamp">М.П.</div>
+    </div>
+</body>
+</html>

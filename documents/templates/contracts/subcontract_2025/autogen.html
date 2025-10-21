@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Договор подряда</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        h2 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        p {
+            margin: 0.2cm 0;
+            text-align: justify;
+        }
+        ul {
+            margin: 0.2cm 0;
+            padding-left: 1cm;
+        }
+        li {
+            margin-bottom: 0.1cm;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: center;
+            width: 45%;
+        }
+        .placeholder {
+            background-color: #f0f8ff;
+            border-bottom: 1px dashed #0d4a81;
+            padding: 2px 4px;
+        }
+        .party-details {
+            margin-bottom: 0.1cm;
+            line-height: 1.3;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ДОГОВОР ПОДРЯДА № <span class="placeholder">{{contract_number}}</span></h1>
+        <p>г. <span class="placeholder">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+    </div>
+
+    <div class="section">
+        <p>
+            {{#if customer_type_ooo}}
+            Общество с ограниченной ответственностью "<span class="placeholder">{{customer_ooo_name}}</span>", именуемое в дальнейшем "Заказчик", в лице <span class="placeholder">{{customer_signatory_last_name}} {{customer_signatory_first_name_initial}}.{{customer_signatory_patronymic_initial}}.</span>, действующего на основании Устава, с одной стороны,
+            {{/if}}
+            {{#if customer_type_ip}}
+            Индивидуальный предприниматель <span class="placeholder">{{customer_last_name}} {{customer_first_name}} {{customer_patronymic}}</span>, зарегистрированный(ая) в установленном законом порядке, ИНН <span class="placeholder">{{customer_inn}}</span>, ОГРНИП <span class="placeholder">{{customer_ogrnip}}</span>, зарегистрированный(ая) по адресу: <span class="placeholder">{{customer_address}}</span>, именуемый(ая) в дальнейшем "Заказчик", с одной стороны,
+            {{/if}}
+        </p>
+
+        <p>
+            {{#if contractor_type_ip}}
+            Индивидуальный предприниматель <span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span>, зарегистрированный(ая) в установленном законом порядке, ИНН <span class="placeholder">{{contractor_inn}}</span>, ОГРНИП <span class="placeholder">{{contractor_ogrnip}}</span>, зарегистрированный(ая) по адресу: <span class="placeholder">{{contractor_address}}</span>, именуемый(ая) в дальнейшем "Подрядчик", с другой стороны, а совместно именуемые "Стороны", заключили настоящий Договор о нижеследующем:
+            {{/if}}
+            {{#if contractor_type_samozanyaty}}
+            {{#if contractor_gender_male}}Гражданин{{else}}Гражданка{{/if}} <span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span>, паспорт: серия <span class="placeholder">{{contractor_passport_series}}</span> номер <span class="placeholder">{{contractor_passport_number}}</span>, выдан <span class="placeholder">{{contractor_passport_issued_by}}</span>, <span class="placeholder">{{contractor_passport_issue_date}}</span>, код подразделения <span class="placeholder">{{contractor_passport_department_code}}</span>, зарегистрированный(ая) по адресу: <span class="placeholder">{{contractor_address}}</span>, именуемый(ая) в дальнейшем "Подрядчик", с другой стороны, а совместно именуемые "Стороны", заключили настоящий Договор о нижеследующем:
+            {{/if}}
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>1. ПРЕДМЕТ ДОГОВОРА</h2>
+        <p>1.1. Подрядчик обязуется выполнить по заданию Заказчика и сдать результат работы, а Заказчик обязуется принять результат работы и оплатить его на условиях, предусмотренных Договором.</p>
+        <p>1.2. Предметом Договора является выполнение Подрядчиком следующих работ:</p>
+        <div class="subsection">- <span class="placeholder">{{work_description}}</span></div>
+        <p>1.3. Работы выполняются в полном объеме и надлежащего качества в соответствии с техническим заданием.</p>
+        <p>1.4. Срок выполнения работ: с <span class="placeholder">{{start_date}}</span> по <span class="placeholder">{{end_date}}</span>.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. СТОИМОСТЬ РАБОТ И ПОРЯДОК РАСЧЕТОВ</h2>
+        <p>2.1. Стоимость работ по Договору составляет: <span class="placeholder">{{work_cost_formatted}}</span> (<span class="placeholder">{{work_cost_words}}</span>), без НДС.</p>
+        <p>2.2. Оплата производится Заказчиком в следующем порядке: <span class="placeholder">{{payment_terms}}</span>.</p>
+        <p>2.3. В случае изменения объема работ Стороны оформляют дополнительное соглашение, которое является неотъемлемой частью Договора.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. ПРИЕМКА РАБОТ</h2>
+        <p>3.1. Приемка выполненных работ осуществляется Заказчиком в течение <span class="placeholder">{{acceptance_period}}</span> рабочих дней с даты окончания работ.</p>
+        <p>3.2. Приемка работ производится на основании Акта приема-передачи выполненных работ.</p>
+        <p>3.3. В случае выявления недостатков в выполненных работах Заказчик вправе потребовать их устранения в разумный срок.</p>
+        <p>3.4. При отсутствии претензий к качеству работ со стороны Заказчика в установленный срок работы считаются принятыми.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. ГАРАНТИИ</h2>
+        <p>4.1. Подрядчик гарантирует, что выполненные работы будут соответствовать условиям Договора.</p>
+        <p>4.2. Гарантийный срок на выполненные работы составляет <span class="placeholder">{{warranty_period}}</span> месяцев с даты приемки работ.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
+        <p>5.1. За неисполнение или ненадлежащее исполнение обязательств по Договору Стороны несут ответственность в соответствии с условиями настоящего Договора.</p>
+        <p>5.2. За просрочку выполнения работ Подрядчик уплачивает Заказчику неустойку в размере <span class="placeholder">{{penalty_rate}}</span> процента от стоимости работ за каждый день просрочки.</p>
+        <p>5.3. За просрочку оплаты Заказчик уплачивает Подрядчику неустойку в размере <span class="placeholder">{{penalty_rate}}</span> процента от суммы задолженности за каждый день просрочки.</p>
+    </div>
+
+    <div class="section">
+        <h2>6. ОБСТОЯТЕЛЬСТВА НЕПРЕОДОЛИМОЙ СИЛЫ</h2>
+        <p>6.1. Стороны освобождаются от ответственности за частичное или полное неисполнение обязательств по Договору, если это неисполнение явилось следствием обстоятельств непреодолимой силы, возникших после заключения Договора.</p>
+        <p>6.2. К обстоятельствам непреодолимой силы относятся: стихийные бедствия, военные действия, эпидемии, а также иные обстоятельства, которые Стороны не могли предвидеть и предотвратить разумными мерами.</p>
+    </div>
+
+    <div class="section">
+        <h2>7. ПРОЧИЕ УСЛОВИЯ</h2>
+        <p>7.1. Настоящий Договор вступает в силу с момента его подписания Сторонами и действует до полного исполнения обязательств.</p>
+        <p>7.2. Все изменения и дополнения к Договору оформляются в письменной форме и подписываются обеими Сторонами.</p>
+        <p>7.3. Договор составлен в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из Сторон.</p>
+        <p>7.4. Все уведомления и сообщения, относящиеся к настоящему Договору, направляются Сторонами друг другу в письменной форме по адресам, указанным в настоящем Договоре.</p>
+        <p>7.5. Договор может быть подписан в электронной форме с использованием простой электронной подписи или иным способом, подтверждающим факт заключения Договора.</p>
+    </div>
+
+    <div class="section">
+        <h2>ПОДПИСИ СТОРОН</h2>
+        <div class="signature-column">
+            <div class="signature-block">
+                <p>ЗАКАЗЧИК:</p>
+                {{#if customer_type_ooo}}
+                <div class="party-details"><span class="placeholder">{{customer_ooo_name}}</span></div>
+                <div class="party-details">ИНН <span class="placeholder">{{customer_inn}}</span></div>
+                <div class="party-details">КПП <span class="placeholder">{{customer_kpp}}</span></div>
+                <div class="party-details">ОГРН <span class="placeholder">{{customer_ogrn}}</span></div>
+                <div class="party-details">Адрес: <span class="placeholder">{{customer_address}}</span></div>
+                {{/if}}
+                {{#if customer_type_ip}}
+                <div class="party-details"><span class="placeholder">{{customer_last_name}} {{customer_first_name}} {{customer_patronymic}}</span></div>
+                <div class="party-details">ИНН <span class="placeholder">{{customer_inn}}</span></div>
+                <div class="party-details">ОГРНИП <span class="placeholder">{{customer_ogrnip}}</span></div>
+                <div class="party-details">Адрес: <span class="placeholder">{{customer_address}}</span></div>
+                {{/if}}
+                <p>«<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+                <p>________________________________________________</p>
+                <p>Подпись</p>
+            </div>
+            <div class="signature-block">
+                <p>ПОДРЯДЧИК:</p>
+                {{#if contractor_type_ip}}
+                <div class="party-details"><span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span></div>
+                <div class="party-details">ИНН <span class="placeholder">{{contractor_inn}}</span></div>
+                <div class="party-details">ОГРНИП <span class="placeholder">{{contractor_ogrnip}}</span></div>
+                <div class="party-details">Адрес: <span class="placeholder">{{contractor_address}}</span></div>
+                {{/if}}
+                {{#if contractor_type_samozanyaty}}
+                <div class="party-details"><span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span></div>
+                <div class="party-details">Паспорт: серия <span class="placeholder">{{contractor_passport_series}}</span> номер <span class="placeholder">{{contractor_passport_number}}</span></div>
+                <div class="party-details">Выдан: <span class="placeholder">{{contractor_passport_issued_by}}</span></div>
+                <div class="party-details">Адрес: <span class="placeholder">{{contractor_address}}</span></div>
+                {{/if}}
+                <p>«<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+                <p>________________________________________________</p>
+                <p>Подпись</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

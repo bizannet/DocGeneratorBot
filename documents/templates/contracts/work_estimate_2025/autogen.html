@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Смета работ</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5cm;
+            margin-bottom: 0.5cm;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding: 8px;
+            text-align: left;
+        }
+        td {
+            padding: 8px;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: center;
+            width: 45%;
+        }
+        .placeholder {
+            background-color: #f0f8ff;
+            border-bottom: 1px dashed #0d4a81;
+            padding: 2px 4px;
+        }
+        .party-details {
+            margin-bottom: 0.1cm;
+            line-height: 1.3;
+            text-align: left;
+        }
+        .total-row {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>СМЕТА РАБОТ</h1>
+        <p>г. <span class="placeholder">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+        <p>№ <span class="placeholder">{{estimate_number}}</span> к договору подряда №<span class="placeholder">{{contract_number}}</span> от «<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+    </div>
+
+    <div class="section">
+        <p>Настоящая смета составлена в том, что стоимость работ по договору подряда №<span class="placeholder">{{contract_number}}</span> от «<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г. составляет:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="5%">№</th>
+                    <th width="45%">Наименование работ</th>
+                    <th width="10%">Ед. изм.</th>
+                    <th width="10%">Кол-во</th>
+                    <th width="15%">Цена за ед., руб.</th>
+                    <th width="15%">Сумма, руб.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if item_1_name}}
+                <tr>
+                    <td>1</td>
+                    <td><span class="placeholder">{{item_1_name}}</span></td>
+                    <td><span class="placeholder">{{item_1_unit}}</span></td>
+                    <td><span class="placeholder">{{item_1_quantity}}</span></td>
+                    <td><span class="placeholder">{{item_1_price}}</span></td>
+                    <td><span class="placeholder">{{item_1_sum}}</span></td>
+                </tr>
+                {{/if}}
+                {{#if item_2_name}}
+                <tr>
+                    <td>2</td>
+                    <td><span class="placeholder">{{item_2_name}}</span></td>
+                    <td><span class="placeholder">{{item_2_unit}}</span></td>
+                    <td><span class="placeholder">{{item_2_quantity}}</span></td>
+                    <td><span class="placeholder">{{item_2_price}}</span></td>
+                    <td><span class="placeholder">{{item_2_sum}}</span></td>
+                </tr>
+                {{/if}}
+                {{#if item_3_name}}
+                <tr>
+                    <td>3</td>
+                    <td><span class="placeholder">{{item_3_name}}</span></td>
+                    <td><span class="placeholder">{{item_3_unit}}</span></td>
+                    <td><span class="placeholder">{{item_3_quantity}}</span></td>
+                    <td><span class="placeholder">{{item_3_price}}</span></td>
+                    <td><span class="placeholder">{{item_3_sum}}</span></td>
+                </tr>
+                {{/if}}
+                {{#if item_4_name}}
+                <tr>
+                    <td>4</td>
+                    <td><span class="placeholder">{{item_4_name}}</span></td>
+                    <td><span class="placeholder">{{item_4_unit}}</span></td>
+                    <td><span class="placeholder">{{item_4_quantity}}</span></td>
+                    <td><span class="placeholder">{{item_4_price}}</span></td>
+                    <td><span class="placeholder">{{item_4_sum}}</span></td>
+                </tr>
+                {{/if}}
+                {{#if item_5_name}}
+                <tr>
+                    <td>5</td>
+                    <td><span class="placeholder">{{item_5_name}}</span></td>
+                    <td><span class="placeholder">{{item_5_unit}}</span></td>
+                    <td><span class="placeholder">{{item_5_quantity}}</span></td>
+                    <td><span class="placeholder">{{item_5_price}}</span></td>
+                    <td><span class="placeholder">{{item_5_sum}}</span></td>
+                </tr>
+                {{/if}}
+
+                <tr class="total-row">
+                    <td colspan="5" style="text-align: right;">Итого:</td>
+                    <td><span class="placeholder">{{total_sum}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Всего наименований: <span class="placeholder">{{items_count}}</span> шт.</p>
+        <p>Стоимость работ: <span class="placeholder">{{total_sum_formatted}}</span> (<span class="placeholder">{{total_sum_words}}</span>).</p>
+        <p>Настоящая смета является неотъемлемой частью договора подряда №<span class="placeholder">{{contract_number}}</span> от «<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+        <p>Смета составлена в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из Сторон.</p>
+    </div>
+
+    <div class="section">
+        <div class="signature-column">
+            <div class="signature-block">
+                <p>ЗАКАЗЧИК:</p>
+                {{#if customer_type_ooo}}
+                <div class="party-details"><span class="placeholder">{{customer_ooo_name}}</span></div>
+                {{/if}}
+                {{#if customer_type_ip}}
+                <div class="party-details"><span class="placeholder">{{customer_last_name}} {{customer_first_name}} {{customer_patronymic}}</span></div>
+                {{/if}}
+                <p>«<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+                <p>________________________________________________</p>
+                <p>Подпись</p>
+            </div>
+            <div class="signature-block">
+                <p>ПОДРЯДЧИК:</p>
+                {{#if contractor_type_ip}}
+                <div class="party-details"><span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span></div>
+                {{/if}}
+                {{#if contractor_type_samozanyaty}}
+                <div class="party-details"><span class="placeholder">{{contractor_last_name}} {{contractor_first_name}} {{contractor_patronymic}}</span></div>
+                {{/if}}
+                <p>«<span class="placeholder">{{contract_day}}</span>» <span class="placeholder">{{contract_month}}</span> <span class="placeholder">{{contract_year}}</span> г.</p>
+                <p>________________________________________________</p>
+                <p>Подпись</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

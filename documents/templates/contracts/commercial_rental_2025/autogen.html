@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Договор аренды нежилого помещения</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        h2 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin: 0.3cm 0 0.2cm 0;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: left;
+            width: 45%;
+        }
+        .variable {
+            font-weight: bold;
+            color: #333;
+        }
+        .party-details {
+            margin-bottom: 0.1cm;
+            line-height: 1.3;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Договор аренды нежилого помещения №<span class="variable">{{contract_number}}</span></h1>
+        <p><span class="variable">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="variable">{{ contract_date.split('.')[0] }}</span>» <span class="variable">{{ contract_date.split('.')[1] }}</span> <span class="variable">{{ contract_date.split('.')[2] }}</span> г.</p>
+    </div>
+    <div class="section">
+        {% if customer_type == 'ООО' %}
+        <p><span class="variable">{{customer_name}}</span>, в лице <span class="variable">{{customer_representative}}</span>, действующий на основании <span class="variable">{{customer_basis}}</span>, именуемый в дальнейшем «Арендатор», с одной стороны,
+        {% else %}
+        <p><span class="variable">{{customer_last_name}} {{customer_first_name}} {{customer_patronymic}}</span>, именуемый в дальнейшем «Арендатор», с одной стороны,
+        {% endif %}
+        {% if landlord_type == 'ООО' %}
+        и <span class="variable">{{landlord_name}}</span>, в лице <span class="variable">{{landlord_representative}}</span>, действующий на основании <span class="variable">{{landlord_basis}}</span>,
+        {% elif landlord_type == 'Индивидуальный предприниматель' %}
+        и Индивидуальный предприниматель <span class="variable">{{landlord_last_name}} {{landlord_first_name}} {{landlord_patronymic}}</span>,
+        {% else %}
+        и <span class="variable">{{landlord_last_name}} {{landlord_first_name}} {{landlord_patronymic}}</span>,
+        {% endif %}
+        именуемый в дальнейшем «Арендодатель», с другой стороны, именуемые вместе «Стороны», заключили настоящий договор (далее - Договор) о нижеследующем.</p>
+    </div>
+    <div class="section">
+        <h2>1. Предмет договора</h2>
+        <p>1.1. Арендодатель обязуется передать Арендатору за плату во временное владение и пользование (аренду) нежилое помещение (далее - Помещение), а Арендатор обязуется принять Помещение и уплачивать Арендодателю арендную плату.</p>
+        <p>1.2. Объектом по Договору является нежилое помещение общей площадью <span class="variable">{{property_area}}</span> кв. м., кадастровый номер Помещения <span class="variable">{{property_cadastral_number}}</span>.
+        Адрес помещения: <span class="variable">{{property_address}}</span>, этаж <span class="variable">{{property_floor}}</span>, номер Помещения на поэтажном плане <span class="variable">{{property_number}}</span>. Границы и площадь Помещения указаны на копии кадастрового паспорта помещения, включающей в себя план расположения Помещения на этаже, являющейся неотъемлемой частью Договора (Приложение N 1).</p>
+        <p>1.3. Цель использования Помещения: <span class="variable">{{property_purpose}}</span>.</p>
+        <p>1.4. Помещение находится в собственности Арендодателя, что подтверждается выпиской из Единого государственного реестра недвижимости N <span class="variable">{{egrn_number}}</span> от <span class="variable">{{egrn_date}}</span> (Приложение N 2).</p>
+        <p>1.5. Арендодатель гарантирует, что на момент заключения Договор Помещение в споре или под арестом не состоит, не является предметом залога и не обременено другими правами третьих лиц.</p>
+    </div>
+     <div class="section">
+        <h2>1. Предмет договора</h2>
+        <p>1.1. Арендодатель обязуется передать Арендатору за плату во временное владение и пользование (аренду) нежилое помещение (далее - Помещение), а Арендатор обязуется принять Помещение и уплачивать Арендодателю арендную плату.</p>
+        <p>1.2. Объектом по Договору является нежилое помещение общей площадью <span class="variable">{{property_area}}</span> кв. м., кадастровый номер Помещения <span class="variable">{{property_cadastral_number}}</span>.
+        Адрес помещения: <span class="variable">{{property_address}}</span>, этаж <span class="variable">{{property_floor}}</span>, номер Помещения на поэтажном плане <span class="variable">{{property_number}}</span>. Границы и площадь Помещения указаны на копии кадастрового паспорта помещения, включающей в себя план расположения Помещения на этаже, являющейся неотъемлемой частью Договора (Приложение N 1).</p>
+        <p>1.3. Цель использования Помещения: <span class="variable">{{property_purpose}}</span>.</p>
+        <p>1.4. Помещение находится в собственности Арендодателя, что подтверждается выпиской из Единого государственного реестра недвижимости N <span class="variable">{{egrn_number}}</span> от <span class="variable">{{egrn_date}}</span> (Приложение N 2).</p>
+        <p>1.5. Арендодатель гарантирует, что на момент заключения Договор Помещение в споре или под арестом не состоит, не является предметом залога и не обременено другими правами третьих лиц.</p>
+    </div>
+    <div class="section">
+        <h2>2. Срок договора</h2>
+        <p>2.1. Договор заключен на срок от «<span class="variable">{{ contract_start_date.split('.')[0] }}</span>» <span class="variable">{{ contract_start_date.split('.')[1] }}</span> <span class="variable">{{ contract_start_date.split('.')[2] }}</span> года до «<span class="variable">{{ contract_end_date.split('.')[0] }}</span>» <span class="variable">{{ contract_end_date.split('.')[1] }}</span> <span class="variable">{{ contract_end_date.split('.')[2] }}</span> года.</p>
+        <p>2.2. Договор вступает в силу с даты его подписания сторонами.</p>
+        <p>2.3. Каждая из Сторон в любое время вправе отказаться от Договора, предупредив об этом другую Сторону за <span class="variable">{{termination_notice}}</span> календарных дней.</p>
+    </div>
+    <div class="section">
+        <h2>3. Права и обязанности сторон</h2>
+        <p>3.1. Арендодатель обязан:</p>
+        <div class="subsection">
+            <p>3.1.1. Подготовить Помещение к передаче, включая составление Акта приемки-передачи недвижимости.</p>
+            <p>3.1.2. Передать Арендатору Помещение в состоянии, соответствующем его назначению и условиям Договора, в течение 5 рабочих дней с даты подписания Договора Сторонами по Акту приемки-передачи недвижимости, который является неотъемлемой частью Договора.</p>
+            <p>3.1.3. Производить капитальный ремонт за свой счет.</p>
+            <p>3.1.4. В случае аварии, произошедшей не по вине Арендатора, немедленно принимать все необходимые меры по устранению ее последствий.</p>
+        </div>
+        <p>3.2. Арендатор не вправе без согласия Арендодателя сдавать Помещение в субаренду, предоставлять его в безвозмездное пользование, передавать арендные права в залог и вносить их в оплату доли в уставном капитале хозяйственных товариществ и обществ или в качестве вклада в совместную деятельность.</p>
+        <p>3.3. Арендатор обязан:</p>
+        <div class="subsection">
+            <p>3.3.1. Перед подписанием Акта приемки-передачи недвижимости осмотреть Помещение и проверить его состояние.</p>
+            <p>3.3.2. Использовать помещение исключительно по его прямому назначению в соответствии с настоящим Договором.</p>
+            <p>3.3.3. Содержать помещение в полной исправности и надлежащем санитарном состоянии в соответствии с требованиями санитарных норм, обеспечивать пожарную и электрическую безопасность, соблюдать правила техника безопасности.</p>
+            <p>3.3.4. Вносить арендную плату в размере, сроки и в порядке, предусмотренные Договором.</p>
+            <p>3.3.5. Своевременно за счет собственных средств производить текущий и косметический ремонт.</p>
+        </div>
+        <p>3.4. Доходы, полученные Арендатором в результате использования Помещения в соответствии с Договором, являются его собственностью.</p>
+    </div>
+    <div class="section">
+        <h2>4. Улучшения арендованного имущества</h2>
+        <p>4.1. Произведенные Арендатором отделимые улучшения Помещения являются собственностью Арендатора.</p>
+        <p>4.2. Арендатор вправе с согласия Арендодателя производить неотделимые улучшения Помещения. После прекращения Договора стоимость неотделимых улучшений Арендатору не возмещается.</p>
+    </div>
+    <div class="section">
+        <h2>5. Размер, сроки и порядок внесения арендной платы</h2>
+        <p>5.1. Арендная плата устанавливается в размере <span class="variable">{{rent_amount}}</span> рублей за месяц и включает стоимость потребляемых Арендатором коммунальных услуг.</p>
+        <p>5.2. Арендная плата может быть пересмотрена по соглашению сторон не чаще одного раза в год. Сторона, выступившая инициатором пересмотра арендной платы, должна предупредить об этом не позднее чем за <span class="variable">{{rent_review_period}}</span>.</p>
+        <p>5.3. Оплата производится ежемесячно путем перечисления суммы, определенной настоящим Договором, с расчетного счета Арендатора на расчетный счет Арендодателя не позднее <span class="variable">{{rent_payment_day}}</span> числа начиная с первого месяца аренды.</p>
+        <p>5.4. Помимо арендной платы Арендатор одновременно с первым платежом вносит также обеспечительный платеж в размере <span class="variable">{{security_deposit}}</span> рублей.</p>
+        <p>5.5. За счет обеспечительного платежа Арендодатель покрывает свои убытки, возникшие по вине Арендатора.</p>
+        <p>5.6. При прекращении обеспеченного обязательства обеспечительный платеж подлежит возврату Арендатору.</p>
+        <p>5.7. Датой уплаты арендной платы и иных платежей по Договору считается дата списания денежных средств с расчетного счета Арендатора.</p>
+    </div>
+    <div class="section">
+        <h2>6. Ответственность сторон</h2>
+        <p>6.1. Сторона, не исполнившая или ненадлежащим образом исполнившая обязательства по Договору, обязана возместить другой Стороне причиненные такими нарушениями убытки.</p>
+        <p>6.2. За несвоевременное перечисление арендной платы Арендодатель вправе требовать с Арендатора уплаты неустойки (пеней) в размере <span class="variable">{{penalty_rate}}</span> процентов от неуплаченной суммы за каждый день просрочки.</p>
+        <p>6.3. За несвоевременную передачу Помещения Сторона, нарушившая Договор, обязана будет уплатить другой Стороне штраф в размере 50 000 (Пятьдесят тысяч) рублей.</p>
+        <p>6.4. Уплата неустоек и штрафов не освобождает Сторону, нарушившую Договор, от исполнения обязательств в натуре.</p>
+        <p>6.5. Во всех других случаях неисполнения обязательств по Договору Стороны несут ответственность в соответствии с условиями настоящего Договора.</p>
+    </div>
+    <div class="section">
+        <h2>7. Обстоятельства непреодолимой силы (форс-мажор)</h2>
+        <p>7.1. Стороны освобождаются от ответственности за неисполнение или ненадлежащее исполнение обязательств по Договору, если надлежащее исполнение оказалось невозможным вследствие непреодолимой силы, то есть чрезвычайных и непредотвратимых при данных условиях обстоятельств, под которыми понимаются запретные действия властей, гражданские волнения, эпидемии, блокада, эмбарго, землетрясения, наводнения, пожары или другие стихийные бедствия.</p>
+        <p>7.2. В случае наступления этих обстоятельств Сторона обязана в течение 5 рабочих дней уведомить об этом другую Сторону.</p>
+        <p>7.3. Если обстоятельства непреодолимой силы продолжают действовать более 30 рабочих дней, то каждая Сторона вправе отказаться от Договора в одностороннем порядке.</p>
+    </div>
+    <div class="section">
+        <h2>8. Разрешение споров</h2>
+        <p>8.1. Все споры, связанные с заключением, толкованием, исполнением и расторжением Договора, будут разрешаться Сторонами путем переговоров.</p>
+        <p>8.2. В случае недостижения соглашения в ходе переговоров заинтересованная Сторона направляет претензию в письменной форме, подписанную уполномоченным лицом.</p>
+        <p>8.3. К претензии должны прилагаться документы, обосновывающие предъявленные заинтересованной Стороной требования (в случае их отсутствия у другой Стороны), и документы, подтверждающие полномочия лица, подписавшего претензию.</p>
+        <p>8.4. Сторона, которой направлена претензию, обязана рассмотреть полученную претензию и о результатах уведомить в письменной форме заинтересованную Сторону в течение 10 рабочих дней со дня получения претензии.</p>
+        <p>8.5. При неурегулировании разногласий в претензионном порядке, а также при неполучении ответа на претензию в течение срока, указанного в п. 8.4 Договора, спор передается в арбитражный суд по месту нахождения ответчика.</p>
+    </div>
+    <div class="section">
+        <h2>9. Изменение и досрочное расторжение договора</h2>
+        <p>9.1. Все изменения и дополнения к Договору действительны, если совершены в письменной форме и подписаны обеими Сторонами. Соответствующие дополнительные соглашения Сторон являются неотъемлемой частью Договора.</p>
+        <p>9.2. Договор может быть досрочно расторгнут по соглашению Сторон либо по требованию одной из Сторон в порядке и по основаниям, предусмотренным настоящим Договором.</p>
+    </div>
+    <div class="section">
+        <h2>10. Заключительные положения</h2>
+        <p>10.1. Договор составлен в двух экземплярах, один из которых находится у Арендодателя, второй - у Арендатора.</p>
+        <p>10.2. Если иное не предусмотрено Договором, уведомления и иные юридически значимые сообщения могут направляться Сторонами по факсимильной связи, электронной почте или иным способом связи при условии, что он позволяет достоверно установить, от кого исходило сообщение и кому оно адресовано.</p>
+        <p>10.3. К Договору прилагаются:
+        - копия кадастрового паспорта Помещения с поэтажным планом Помещения (Приложение N 1);
+        - выписка из Единого государственного реестра недвижимости N <span class="variable">{{egrn_number}}</span> от <span class="variable">{{egrn_date}}</span> (Приложение N 2);</p>
+    </div>
+    <div class="section">
+        <h2>11. Адреса, реквизиты и подписи сторон</h2>
+        <div class="signature-column">
+            <div class="signature-block">
+                <div class="party-details"><strong>Арендатор:</strong></div>
+                {% if customer_type == 'ООО' %}
+                <div class="party-details"><span class="variable">{{customer_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{customer_inn}}</span></div>
+                <div class="party-details">КПП: <span class="variable">{{customer_kpp}}</span></div>
+                <div class="party-details">ОГРН: <span class="variable">{{customer_ogrn}}</span></div>
+                {% elif customer_type == 'ИП' %}
+                <div class="party-details">ИП <span class="variable">{{customer_ip_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{customer_inn}}</span></div>
+                <div class="party-details">ОГРНИП: <span class="variable">{{customer_ogrn}}</span></div>
+                {% else %}
+                <div class="party-details"><span class="variable">{{customer_individual_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{customer_inn}}</span></div>
+                {% endif %}
+                <div class="party-details">Адрес: <span class="variable">{{customer_address}}</span></div>
+
+                <div style="margin-top: 20px;"></div>
+
+                {% if customer_type == 'ООО' %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details"><span class="variable">{{customer_position}}</span></div>
+                <div class="party-details"><span class="variable">{{customer_representative}}</span></div>
+                {% elif customer_type == 'ИП' %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details">
+                    ИП <span class="variable">
+                        {% set names = customer_ip_name.split(' ') %}
+                        {{ names[0] }} {{ names[1][0] }}.{% if names|length > 2 %}{{ names[2][0] }}{% endif %}.
+                    </span>
+                </div>
+                {% else %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details">
+                    <span class="variable">
+                        {% set names = customer_individual_name.split(' ') %}
+                        {{ names[0] }} {{ names[1][0] }}.{% if names|length > 2 %}{{ names[2][0] }}{% endif %}.
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="signature-block">
+                <div class="party-details"><strong>Арендодатель:</strong></div>
+                {% if landlord_type == 'ООО' %}
+                <div class="party-details"><span class="variable">{{landlord_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{landlord_inn}}</span></div>
+                <div class="party-details">КПП: <span class="variable">{{landlord_kpp}}</span></div>
+                <div class="party-details">ОГРН: <span class="variable">{{landlord_ogrn}}</span></div>
+                {% elif landlord_type == 'Индивидуальный предприниматель' %}
+                <div class="party-details">ИП <span class="variable">{{landlord_ip_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{landlord_inn}}</span></div>
+                <div class="party-details">ОГРНИП: <span class="variable">{{landlord_ogrn}}</span></div>
+                {% else %}
+                <div class="party-details"><span class="variable">{{landlord_individual_name}}</span></div>
+                <div class="party-details">ИНН: <span class="variable">{{landlord_inn}}</span></div>
+                {% endif %}
+                <div class="party-details">Адрес: <span class="variable">{{landlord_address}}</span></div>
+                <div class="party-details">Р/с: <span class="variable">{{landlord_bank_account}}</span></div>
+                <div class="party-details">Банк: <span class="variable">{{landlord_bank_name}}</span></div>
+                <div class="party-details">БИК: <span class="variable">{{landlord_bic}}</span></div>
+                <div class="party-details">Корр/с: <span class="variable">{{landlord_corr_account}}</span></div>
+
+                <div style="margin-top: 20px;"></div>
+
+                {% if landlord_type == 'ООО' %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details"><span class="variable">{{landlord_position}}</span></div>
+                <div class="party-details">
+                    <span class="variable">
+                        {% set names = landlord_representative.split(' ') %}
+                        {{ names[0] }} {{ names[1][0] }}.{% if names|length > 2 %}{{ names[2][0] }}{% endif %}.
+                    </span>
+                </div>
+                {% elif landlord_type == 'Индивидуальный предприниматель' %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details">
+                    ИП <span class="variable">
+                        {% set names = landlord_ip_name.split(' ') %}
+                        {{ names[0] }} {{ names[1][0] }}.{% if names|length > 2 %}{{ names[2][0] }}{% endif %}.
+                    </span>
+                </div>
+                {% else %}
+                <div class="party-details">_________________________</div>
+                <div class="party-details">
+                    <span class="variable">
+                        {% set names = landlord_individual_name.split(' ') %}
+                        {{ names[0] }} {{ names[1][0] }}.{% if names|length > 2 %}{{ names[2][0] }}{% endif %}.
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

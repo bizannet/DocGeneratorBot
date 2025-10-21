@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Акт приема-передачи нежилого помещения</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            margin: 0.5cm;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.5cm;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0d4a81;
+        }
+        h1 {
+            font-size: 12pt;
+            color: #0d4a81;
+            margin-bottom: 0.3cm;
+        }
+        .section {
+            margin-bottom: 0.3cm;
+        }
+        .subsection {
+            margin-left: 1cm;
+            margin-bottom: 0.2cm;
+        }
+        p {
+            margin: 0.2cm 0;
+        }
+        .signature-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5cm;
+        }
+        .signature-block {
+            text-align: center;
+            width: 45%;
+        }
+        .variable {
+            background-color: #f0f8ff;
+            border-bottom: 1px dashed #0d4a81;
+            padding: 2px 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Акт приема-передачи нежилого помещения</h1>
+        <p>г. <span class="variable">{{contract_city}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «<span class="variable">{{current_date_formatted}}</span>» г.</p>
+    </div>
+
+    <div class="section">
+        <p><span class="variable">{{landlord_full_name}}</span>, именуемый в дальнейшем "Арендодатель", с одной стороны, и <span class="variable">{{tenant_full_name}}</span>, именуемый в дальнейшем "Арендатор", с другой стороны, а вместе именуемые "Стороны",</p>
+        <p>заключили настоящий акт приема-передачи нежилого помещения о нижеследующем:</p>
+    </div>
+
+    <div class="section">
+        <p>1. По настоящему акту согласно договору аренды нежилого помещения №<span class="variable">{{rental_contract_number}}</span> от <span class="variable">{{rental_contract_date}}</span>, Арендодатель передает Арендатору принадлежащее ему на праве собственности нежилое помещение общей площадью <span class="variable">{{total_area}}</span> кв. м, расположенное на <span class="variable">{{floor}}</span> этаже по адресу: <span class="variable">{{property_address}}</span>, номер помещения на поэтажном плане <span class="variable">{{room_number_on_floor_plan}}</span>, а Арендатор принимает его в порядке и на условиях, установленных Сторонами в договоре. Назначение помещения: <span class="variable">{{property_purpose}}</span>.</p>
+        <p>2. Техническое состояние помещения полностью удовлетворяет требованиям Арендатора и соответствует условиям договора аренды.</p>
+        <p>3. Передаваемое нежилое помещение свободно от имущественных прав и претензий третьих лиц.</p>
+
+        <p>4. Одновременно с передачей помещения Арендодатель передает Арендатору комплекты ключей в количестве <span class="variable">{{keys_count}}</span> единиц и имущество, находящееся в помещении, в соответствии с отдельной описью имущества, являющейся неотъемлемой частью настоящего акта.</p>
+
+        <p>5. Нежилое помещение передано в следующем состоянии:</p>
+        <div class="subsection">
+            <p>5.1. Показания приборов учета на момент передачи: <span class="variable">{{meter_readings}}</span></p>
+            <p>5.2. Общее состояние помещения: <span class="variable">{{premises_condition}}</span></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <p>6. Настоящий акт составлен в <span class="variable">{{copies_count}}</span> экземплярах, имеющих одинаковую юридическую силу.</p>
+        <p>7. Настоящий акт является неотъемлемой частью договора аренды нежилого помещения №<span class="variable">{{rental_contract_number}}</span> от <span class="variable">{{rental_contract_date}}</span>.</p>
+    </div>
+
+    <div class="signature-column">
+        <div class="signature-block">
+            <p>________________________________________________</p>
+            <p>Арендатор – подпись / расшифровка</p>
+            <p><span class="variable">{{tenant_full_name}}</span></p>
+        </div>
+        <div class="signature-block">
+            <p>________________________________________________</p>
+            <p>Арендодатель – подпись / расшифровка</p>
+            <p><span class="variable">{{landlord_full_name}}</span></p>
+        </div>
+    </div>
+</body>
+</html>
