@@ -1,11 +1,13 @@
 import logging
 from datetime import datetime
 from config import config
+from aiogram import Bot
 
 logger = logging.getLogger('doc_bot.notifications')
 
 
 async def notify_support_about_new_order(
+    bot: Bot,
     order_id: int,
     user_id: int,
     cart_items: list,
@@ -16,8 +18,6 @@ async def notify_support_about_new_order(
     if not config.SUPPORT_CHAT_ID:
         logger.error("SUPPORT_CHAT_ID не установлен в конфигурации")
         return
-
-    from bot import bot
 
     order_details = f"Заказ #{order_id}\n"
     order_details += f"Пользователь: {user_id}\n"
@@ -52,13 +52,10 @@ async def notify_support_about_new_order(
         logger.error(f"Ошибка отправки уведомления о заказе: {e}")
 
 
-async def notify_support_about_support_request(user_id: int, message_text: str):
-    """Отправляет запрос пользователя в группу поддержки"""
+async def notify_support_about_support_request(bot: Bot, user_id: int, message_text: str):
     if not config.SUPPORT_CHAT_ID:
         logger.error("SUPPORT_CHAT_ID не установлен")
         return
-
-    from bot import bot
 
     reply_id = f"reply_{user_id}_{int(datetime.now().timestamp())}"
     text = (
@@ -78,9 +75,8 @@ async def notify_support_about_support_request(user_id: int, message_text: str):
         logger.error(f"Ошибка отправки запроса поддержки: {e}")
 
 
-async def send_daily_stats_report():
+async def send_daily_stats_report(bot: Bot):
     from database.orders import get_daily_stats
-    from bot import bot
 
     if not config.SUPPORT_CHAT_ID:
         return
@@ -102,9 +98,8 @@ async def send_daily_stats_report():
         logger.error(f"Ошибка отправки ежедневной статистики: {e}")
 
 
-async def send_monthly_stats_report():
+async def send_monthly_stats_report(bot: Bot):
     from database.orders import get_monthly_stats
-    from bot import bot
 
     if not config.SUPPORT_CHAT_ID:
         return
@@ -127,9 +122,9 @@ async def send_monthly_stats_report():
         logger.error(f"Ошибка отправки ежемесячной статистики: {e}")
 
 
-async def send_yearly_stats_report():
+async def send_yearly_stats_report(bot: Bot):
     from database.orders import get_yearly_stats
-    from bot import bot
+
     if not config.SUPPORT_CHAT_ID:
         return
 
@@ -154,14 +149,7 @@ async def send_yearly_stats_report():
         logger.error(f"Ошибка отправки годовой статистики: {e}")
 
 
-async def notify_support_about_new_promocode(promocode_code: str, discount: int):
-    """Уведомление о новом сезонном промокоде"""
-    if not config.SUPPORT_CHAT_ID:
-        logger.error("SUPPORT_CHAT_ID не установлен")
-        return
-
-    from bot import bot
-
+async def notify_support_about_new_promocode(bot: Bot, promocode_code: str, discount: int):
     month_abbr = promocode_code[:3].upper()
     months = {
         "JAN": "января", "FEB": "февраля", "MAR": "марта", "APR": "апреля",
@@ -185,9 +173,8 @@ async def notify_support_about_new_promocode(promocode_code: str, discount: int)
         logger.error(f"Ошибка отправки уведомления о промокоде: {e}")
 
 
-async def send_newsletter_to_all(message_text: str) -> dict:
+async def send_newsletter_to_all(bot: Bot, message_text: str) -> dict:
     from database.users import get_all_users
-    from bot import bot
 
     users = get_all_users()
     sent_count = 0

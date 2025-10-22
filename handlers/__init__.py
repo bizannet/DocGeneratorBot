@@ -6,7 +6,6 @@ from .order_history import router as order_history_router
 from .admin import router as admin_router
 from .feedback import router as feedback_router
 from .partners import router as partners_router
-from .recommendation import router as recommendation_router
 from .templates import router as templates_router
 from .drafts import router as drafts_router
 from .utils import router as utils_router

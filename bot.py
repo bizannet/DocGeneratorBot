@@ -15,7 +15,6 @@ from handlers import (
     admin,
     feedback,
     partners,
-    recommendation,
     templates,
     drafts,
     support,
@@ -73,7 +72,6 @@ async def main():
         dp.include_router(admin.router)
         dp.include_router(feedback.router)
         dp.include_router(partners.router)
-        dp.include_router(recommendation.router)
         dp.include_router(templates.router)
         dp.include_router(drafts.router)
         dp.include_router(support.router)
@@ -81,7 +79,7 @@ async def main():
 
         # Запуск фоновых задач
         logger.info("Запуск фоновых задач...")
-        asyncio.create_task(send_daily_stats())  # Добавлено: запуск фоновой задачи отправки статистики
+        asyncio.create_task(send_daily_stats())
 
         # Запуск бота
         logger.info("Запуск бота...")
